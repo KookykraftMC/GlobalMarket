@@ -10,7 +10,6 @@ import com.comphenix.protocol.utility.MinecraftReflection;
 import me.dasfaust.gm.menus.CreationMenu;
 import me.dasfaust.gm.menus.MenuBase;
 import me.dasfaust.gm.menus.Menus;
-import me.dasfaust.gm.tools.GMLogger;
 import me.dasfaust.gm.trade.WrappedStack;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -207,6 +206,17 @@ public static String header = String.format("GlobalMarket config: v%s", Core.ins
                 }
             }
         }
+        /*for(Field f : DiamondExchangeHandler.class.getDeclaredFields())
+        {
+            if (f != null)
+            {
+                if (f.getName().startsWith("FUNC"))
+                {
+                    MenuBase.FunctionButton button = (MenuBase.FunctionButton) f.get(null);
+                    config.addDefault("menu_function_items." + f.getName(), button.getItemId());
+                }
+            }
+        }*/
 		config.options().copyDefaults(true);
 		
 		save();
