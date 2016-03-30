@@ -152,6 +152,7 @@ public class Menus
 						if (remaining < viewer.lastStackOnCursor.getAmount())
 						{
 							viewer.lastStackOnCursor.setAmount(viewer.lastStackOnCursor.getAmount() - remaining);
+							player.setItemOnCursor(viewer.lastStackOnCursor.bukkit());
 							StorageHelper.updateStockAmount(stock, stock.amount + remaining);
 						}
 						else
@@ -740,8 +741,6 @@ public class Menus
 		MENU_STORAGE.addFunction(53, Menus.FUNC_NEXTPAGE);
 		MENU_STORAGE.addFunction(52, Menus.FUNC_STORAGE_NAVIGATION);
 
-		//MENU_LISTINGS.addFunction(51, DiamondExchangeHandler.FUNC_DE_NAVIGATION);
-
 		if (Core.instance.config().get(Defaults.DISABLE_STOCK))
 		{
 			MENU_LISTINGS.addFunction(46, FUNC_NOSTOCK_CREATE_LISTING);
@@ -760,5 +759,10 @@ public class Menus
 				MENU_LISTINGS.addFunction(47, FUNC_SERVER_LISTINGS_NAVIGATION);
 			}
 		}
+	}
+
+	public static void addButton(MenuBase<?> menu, int slot, FunctionButton button)
+	{
+		menu.addFunction(slot, button);
 	}
 }
