@@ -19,7 +19,8 @@ public class CreateSeverListingCommand extends CommandContext
         super(
                 new String[] {
                         "createinf",
-                        "listinf"
+                        "listinf",
+                        "newinflisting"
                 },
                 "globalmarket.command.createserverlisting",
                 1,
